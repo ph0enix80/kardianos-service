@@ -271,6 +271,9 @@ func (ws *windowsService) Install() error {
 		return err
 	}
 
+	// add quotes to the path in order to avoid "unquoted search path" issue
+	exepath = `"` + exepath + `"`
+
 	m, err := mgr.Connect()
 	if err != nil {
 		return err
